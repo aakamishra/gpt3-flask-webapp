@@ -18,7 +18,7 @@ def index():
         response = openai.Completion.create(
             model="text-davinci-002",
             prompt=generate_star_wars_prompt(star_wars_faction),
-            temperature=0.9,
+            temperature=0.7,
         )
         # return result object to display for the html index
         return redirect(url_for("index", result=response.choices[0].text))
@@ -28,9 +28,8 @@ def index():
     return render_template("index.html", result=result)
 
 
-
 def generate_star_wars_prompt(animal):
-    return """Suggest three names for a character in Star Wars.
+    return """Suggest three new names for a character in Star Wars.
 Faction: Rebels 
 Names: Captain Andor, Bay Organa, Ben Solo
 Faction: Empire
